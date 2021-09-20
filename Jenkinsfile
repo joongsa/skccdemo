@@ -17,11 +17,11 @@ pipeline {
           }
         }
 
-        stage('Build image') {
+        stage('Build docker image') {
            app = docker.build("076554559743.dkr.ecr.ap-northeast-2.amazonaws.com/katest")
         }
 
-         stage('Push image') {
+         stage('Push ecr') {
              sh 'rm  ~/.dockercfg || true'
              sh 'rm ~/.docker/config.json || true'
 
