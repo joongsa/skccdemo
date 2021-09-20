@@ -22,16 +22,19 @@ pipeline {
             sh 'docker build -t skccdemo:latest .'
           }
         }
-/*
-         stage('Push ecr') {
-             sh 'rm  ~/.dockercfg || true'
-             sh 'rm ~/.docker/config.json || true'
 
-             docker.withRegistry('https://076554559743.dkr.ecr.ap-northeast-2.amazonaws.com', 'ecr:ap-northeast-2:jenkinsaws') {
-                 app.push("${env.BUILD_NUMBER}")
-                 app.push("latest")
-             }
+        stage('Docker image push') {
+            steps {
+                // image tagging
+                sh 'docker tag skccdemo 076554559743.dkr.ecr.ap-northeast-2.amazonaws.com/katest'
+
+                // AWS ECR login
+                sh 'aws ecr get-login-password | docker login --username AWS --password-stdin 076554559743.dkr.ecr.ap-northeast-2.amazonaws.com'
+
+                // push image
+                sh 'docker push 076554559743.dkr.ecr.ap-northeast-2.amazonaws.com/katest'
+            }
         }
-*/
+
     }
 }
