@@ -14,7 +14,7 @@ pipeline {
             //sh 'chmod 777 gradlew'
             //sh './gradlew build'
             sh 'gradle clean -b build.gradle'
-            archiveArtifacts './*.jar'
+            archiveArtifacts '/*.jar'
           }
         }
 
