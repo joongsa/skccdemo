@@ -31,3 +31,8 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+bootJar {
+	mainClass = 'com.skcc.skccdemo.SkccdemoApplication'
+
+}
