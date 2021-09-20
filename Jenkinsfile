@@ -22,7 +22,7 @@ pipeline {
             app = docker.build("076554559743.dkr.ecr.ap-northeast-2.amazonaws.com/katest")
           }
         }
-
+/*
          stage('Push ecr') {
              sh 'rm  ~/.dockercfg || true'
              sh 'rm ~/.docker/config.json || true'
@@ -32,6 +32,6 @@ pipeline {
                  app.push("latest")
              }
         }
-
+*/
     }
 }
