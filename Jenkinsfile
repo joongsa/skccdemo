@@ -11,7 +11,7 @@ pipeline {
 
         stage('Gradle Build') {
           steps {
-            //sh 'chmod 777 gradlew'
+            sh 'chmod 777 gradlew'
             sh './gradlew build'
             //sh 'gradle clean -b build.gradle'
           }
