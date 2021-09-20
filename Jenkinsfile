@@ -19,7 +19,7 @@ pipeline {
 
         stage('Build docker image') {
           steps {
-            app = docker.build("076554559743.dkr.ecr.ap-northeast-2.amazonaws.com/katest")
+            sh 'docker build -t skccdemo:latest .'
           }
         }
 /*
