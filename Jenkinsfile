@@ -18,7 +18,9 @@ pipeline {
         }
 
         stage('Build docker image') {
-           app = docker.build("076554559743.dkr.ecr.ap-northeast-2.amazonaws.com/katest")
+          steps {
+            app = docker.build("076554559743.dkr.ecr.ap-northeast-2.amazonaws.com/katest")
+          }
         }
 
          stage('Push ecr') {
