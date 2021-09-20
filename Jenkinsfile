@@ -29,7 +29,7 @@ pipeline {
                 sh 'docker tag skccdemo 076554559743.dkr.ecr.ap-northeast-2.amazonaws.com/katest'
 
                 // AWS ECR login
-                sh 'aws ecr get-login-password | docker login --username AWS --password-stdin 076554559743.dkr.ecr.ap-northeast-2.amazonaws.com'
+                sh 'aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 076554559743.dkr.ecr.ap-northeast-2.amazonaws.com'
 
                 // push image
                 sh 'docker push 076554559743.dkr.ecr.ap-northeast-2.amazonaws.com/katest'
