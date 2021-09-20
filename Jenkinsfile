@@ -17,6 +17,19 @@ pipeline {
           }
         }
 
+        stage('Build image') {
+           app = docker.build("076554559743.dkr.ecr.ap-northeast-2.amazonaws.com/katest")
+        }
+
+         stage('Push image') {
+             sh 'rm  ~/.dockercfg || true'
+             sh 'rm ~/.docker/config.json || true'
+
+             docker.withRegistry('https://076554559743.dkr.ecr.ap-northeast-2.amazonaws.com', 'ecr:ap-northeast-2:jenkinsaws') {
+                 app.push("${env.BUILD_NUMBER}")
+                 app.push("latest")
+             }
+        }
 
     }
 }
